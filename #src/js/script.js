@@ -49,7 +49,19 @@ $(document).ready(function () {
 		variableWidth: false,
 	});
 
-
-
+	$('.features-rashguard').slick({
+		autoplay: false,
+		infinite: false,
+		arrows: false,
+		dots: true,
+		variableWidth: true,
+		mobileFirst: true,
+		responsive: [
+			{
+				breakpoint: 991,
+				settings: "unslick"
+			},
+		]
+	});
 
 });

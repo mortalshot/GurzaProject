@@ -210,7 +210,7 @@
 }
 
 .conditions {
-	padding: 93px 0;
+	padding: 93px 0 75px;
 	overflow: hidden;
 
 	@media screen and (max-width: 767px) {
@@ -219,9 +219,6 @@
 
 	@media screen and (max-width: 575px) {
 		padding-top: 22px;
-	}
-
-	&__container {
 	}
 
 	&__row {
@@ -247,9 +244,6 @@
 			padding: 0;
 			flex: 1 1 100%;
 		}
-	}
-
-	&__title {
 	}
 
 	&__text {
@@ -288,9 +282,6 @@
 			}
 		}
 	}
-
-	&__features {
-	}
 }
 .features-conditions {
 	display: flex;
@@ -328,10 +319,10 @@
 	}
 
 	&__icon {
-		margin-bottom: 18px;
+		margin-bottom: 13px;
 
 		@media screen and (max-width: 575px) {
-			margin-bottom: 14px;
+			margin-bottom: 10px;
 		}
 	}
 
@@ -349,5 +340,134 @@
 	&__text {
 		font-size: 14px;
 		line-height: 22px;
+	}
+}
+
+.rashguard {
+	@media screen and (max-width: 450px) {
+		padding: 0;
+	}
+
+	.conditions__row {
+		@media screen and (max-width: 1200px) {
+			padding-bottom: 0;
+		}
+	}
+
+	.conditions__text {
+		padding-bottom: 81px;
+
+		@media screen and (max-width: 575px) {
+			padding-bottom: 40px;
+		}
+	}
+
+	.card-item__right {
+		right: 16px;
+		top: 14px;
+	}
+
+	.card-item__bottom-right {
+		right: 16px;
+		bottom: 15px;
+	}
+
+	&__button {
+		width: 269px;
+		height: 61px;
+		margin: 0 auto;
+		margin-top: 80px;
+
+		@media screen and (max-width: 575px) {
+			margin-top: 70px;
+		}
+
+		@media screen and (max-width: 450px) {
+			width: 100%;
+		}
+	}
+}
+.features-rashguard {
+	display: flex;
+	margin: 0 -15px;
+
+	&__item {
+		flex: 0 0 33.333%;
+		padding: 0 15px;
+		display: flex;
+
+		@media screen and (max-width: 991px) {
+			flex: 0 0 50%;
+		}
+	}
+
+	&__body {
+		background: $card-color;
+		width: 100%;
+		padding: 57px 40px 62px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+
+		@media screen and (max-width: 450px) {
+			padding: 35px 18px;
+		}
+	}
+
+	&__icon {
+		margin-bottom: 22px;
+
+		@media screen and (max-width: 450px) {
+			margin-bottom: 14px;
+		}
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 30px;
+		max-width: 223px;
+		flex: 1 1 auto;
+
+		@media screen and (max-width: 1440px) {
+			font-size: calc(16px + 4 * ((100vw - 320px) / (1440 - 320)));
+			line-height: calc(30 / 20);
+		}
+	}
+
+	.slick-dots {
+		position: absolute;
+		bottom: -30px;
+		left: 50%;
+		transform: translate(-50%, 0);
+
+		li {
+			margin-right: 10px;
+			@media screen and (max-width: 450px) {
+				margin-right: 6px;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			button {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: rgba(196, 196, 196, 0.3);
+
+				@media screen and (max-width: 450px) {
+					width: 6px;
+					height: 6px;
+				}
+			}
+
+			&.slick-active {
+				button {
+					background: #fff;
+				}
+			}
+		}
 	}
 }

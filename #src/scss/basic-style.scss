@@ -99,7 +99,7 @@ body {
     font-weight: 600;
     font-size: 34px;
     line-height: 51px;
-    max-width: 450px;
+    max-width: 490px;
     position: relative;
     padding: 0 0 38px 45px;
     margin-bottom: 50px;
@@ -144,7 +144,7 @@ body {
 
         &::after {
             height: 10px;
-            width: 66%;
+            width: 61%;
 
             @media screen and (max-width: 575px) {
                 height: 6px;
@@ -152,4 +152,8 @@ body {
             }
         }
     }
+}
+
+.d-flex {
+    display: flex;
 }
