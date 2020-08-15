@@ -3,4 +3,7 @@
 
 // custom scripts
 @@include('webp.js')
+@@include('dynamic-adapt.js')
 @@include('menu.js')
+@@include('popup.js')
+@@include('animation.js')

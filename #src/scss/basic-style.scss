@@ -15,10 +15,8 @@ body {
     font-size: 14px;
     color: $text-color;
 
-    @media screen and (max-width: 767px) {
-        &.lock {
-            overflow: hidden;
-        }
+    &.lock {
+        overflow: hidden;
     }
 }
 
@@ -27,7 +25,6 @@ body {
     margin: 0 auto;
     padding: 0 10px;
 }
-
 
 .button {
     border: 3px solid $bg-color;
@@ -49,7 +46,7 @@ body {
     transition: 0.3s ease all 0s;
 
     &::after {
-        content: '';
+        content: "";
         background: url(../img/icons/btnhov.svg) no-repeat right;
         opacity: 0;
         width: 0;
@@ -58,7 +55,6 @@ body {
     }
 
     &:hover {
-
         &::after {
             display: block;
             opacity: 1;
@@ -83,9 +79,9 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    
+
     &::before {
-        content: '';
+        content: "";
         display: block;
         width: 35px;
         height: 35px;
@@ -96,6 +92,64 @@ body {
             width: 18px;
             height: 18px;
             padding-right: 16px;
+        }
+    }
+}
+.angle-title {
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 51px;
+    max-width: 450px;
+    position: relative;
+    padding: 0 0 38px 45px;
+    margin-bottom: 50px;
+
+    @media screen and (max-width: 1440px) {
+        font-size: calc(24px + 10 * ((100vw - 320px) / (1440 - 320)));
+        line-height: calc(41 / 34);
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 34px;
+    }
+
+    @media screen and (max-width: 575px) {
+        padding: 0 0 20px 20px;
+        line-height: calc(51 / 34);
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        background: $bg-color;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 1s ease all 0s;
+        width: 0;
+        height: 0;
+    }
+
+    &.active {
+        &::before {
+            height: 80%;
+            width: 10px;
+
+            @media screen and (max-width: 575px) {
+                width: 6px;
+                height: 73%;
+            }
+        }
+
+        &::after {
+            height: 10px;
+            width: 66%;
+
+            @media screen and (max-width: 575px) {
+                height: 6px;
+                width: 77%;
+            }
         }
     }
 }

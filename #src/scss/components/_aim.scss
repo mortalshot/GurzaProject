@@ -1,0 +1,192 @@
+.aim {
+	opacity: 0.3;
+
+	&__first {
+		position: relative;
+		width: 798px;
+		height: 716px;
+
+		@media screen and (max-width: 1200px) {
+			width: 638px;
+			height: 572px;
+		}
+
+		@media screen and (max-width: 991px) {
+			width: 510px;
+			height: 457px;
+		}
+
+		@media screen and (max-width: 767px) {
+			width: 408px;
+			height: 365px;
+		}
+
+		@media screen and (max-width: 575px) {
+			width: 326px;
+			height: 292px;
+		}
+
+		@media screen and (max-width: 450px) {
+			width: 146px;
+			height: 146px;
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+		}
+
+		&::before {
+			background: url(../img/main/aim/5.png) no-repeat center/cover;
+			width: 798px;
+			height: 716px;
+			animation: right-rotate 15s linear infinite;
+
+			@media screen and (max-width: 1200px) {
+				width: 638px;
+				height: 572px;
+			}
+
+			@media screen and (max-width: 991px) {
+				width: 510px;
+				height: 457px;
+			}
+
+			@media screen and (max-width: 767px) {
+				width: 408px;
+				height: 365px;
+			}
+
+			@media screen and (max-width: 575px) {
+				width: 326px;
+				height: 292px;
+			}
+
+			@media screen and (max-width: 450px) {
+				width: 146px;
+				height: 146px;
+			}
+		}
+
+		&::after {
+			width: 623px;
+			height: 625px;
+			background: url(../img/main/aim/1.png) no-repeat center/cover;
+			animation: left-rotate 10s linear infinite;
+
+			@media screen and (max-width: 1200px) {
+				width: 498px;
+				height: 500px;
+			}
+
+			@media screen and (max-width: 991px) {
+				width: 398px;
+				height: 398px;
+			}
+
+			@media screen and (max-width: 767px) {
+				width: 318px;
+				height: 318px;
+			}
+
+			@media screen and (max-width: 575px) {
+				width: 254px;
+				height: 254px;
+			}
+
+			@media screen and (max-width: 450px) {
+				width: 114px;
+				height: 114px;
+			}
+		}
+	}
+
+	&__second {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 358px;
+		height: 358px;
+
+		&::before,
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&::before {
+			width: 485px;
+			height: 483px;
+			background: url(../img/main/aim/4.png) no-repeat center/cover;
+			animation: right-rotate 8s linear infinite;
+
+			@media screen and (max-width: 1200px) {
+				width: 388px;
+				height: 386px;
+			}
+
+			@media screen and (max-width: 991px) {
+				width: 310px;
+				height: 310px;
+			}
+
+			@media screen and (max-width: 767px) {
+				width: 248px;
+				height: 248px;
+			}
+
+			@media screen and (max-width: 575px) {
+				width: 198px;
+				height: 198px;
+			}
+
+			@media screen and (max-width: 450px) {
+				width: 89px;
+				height: 89px;
+			}
+		}
+
+		&::after {
+			width: 366px;
+			height: 366px;
+			background: url(../img/main/aim/3.png) no-repeat center/cover;
+			animation: left-rotate 6s linear infinite;
+
+			@media screen and (max-width: 1200px) {
+				width: 292px;
+				height: 292px;
+			}
+
+			@media screen and (max-width: 991px) {
+				width: 233px;
+				height: 233px;
+			}
+
+			@media screen and (max-width: 767px) {
+				width: 186px;
+				height: 186px;
+			}
+
+			@media screen and (max-width: 575px) {
+				width: 148px;
+				height: 148px;
+			}
+
+			@media screen and (max-width: 450px) {
+				width: 64px;
+				height: 64px;
+			}
+		}
+	}
+}

@@ -22,11 +22,34 @@ $(document).ready(function () {
 		let slidesNumber = $('.catalog__card').length;
 		let slidesClonedNumber = $('.catalog__card.slick-cloned').length;
 		let dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
-
 		$('.catalog__cards .slick-dots li').width(dotsWidth + '%');
 	})
 
-	$('.catalog__cards .slick-dots li button').click(function () {
-		$('.slick-track')
+	$(function () {
+		let slidesNumber = $('.item-photoes').length;
+		let slidesClonedNumber = $('.item-photoes.slick-cloned').length;
+		let dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
+		$('.item-photoes .slick-dots li').width(dotsWidth + '%');
 	})
+
+	var $status = $('.pagingInfo');
+	var $slickElement = $('.item-photoes');
+	$slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+		var i = (currentSlide ? currentSlide : 0) + 1;
+		$status.text('Фото ' + i + ' из ' + slick.slideCount);
+	});
+
+	$('.item-photoes').slick({
+		autoplay: false,
+		infinite: false,
+		arrows: true,
+		dots: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		variableWidth: false,
+	});
+
+
+
+
 });
