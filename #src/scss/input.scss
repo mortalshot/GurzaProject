@@ -1,0 +1,75 @@
+.input-wrapper {
+    position: relative;
+
+    &__text {
+        width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 10px;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 0;
+        padding: 9px 16px;
+        @media screen and (max-width: 575px) {
+            padding: 5px 16px;
+        }
+        &::placeholder {
+            color: #7d838c;
+            opacity: 1;
+            transition: 0.5s ease all 0s;
+        }
+
+        &:focus {
+            outline: 0;
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    &__label {
+        padding-left: 36px;
+        cursor: pointer;
+        position: relative;
+        line-height: 24px;
+        font-size: calc(13px + 3 * ((100vw - 320px) / (1440 - 320)));
+        line-height: calc(24 / 16);
+        user-select: none;
+        &::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            border: 1px solid #000;
+        }
+    }
+}
+
+.input-wrapper--radio {
+    input[type="radio"] + label:before {
+        border-radius: 50%;
+    }
+
+    input[type="radio"]:checked + label:before {
+        border-width: 8px;
+    }
+}
+.input-wrapper--check {
+    input[type="checkbox"]:checked + label:before {
+        content: "\2713";
+        line-height: 23px;
+        padding-left: 4px;
+    }
+}
