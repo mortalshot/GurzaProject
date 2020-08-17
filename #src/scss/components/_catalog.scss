@@ -258,6 +258,15 @@
 		align-items: flex-end;
 	}
 
+	&__bottom-left {
+		position: absolute;
+		left: 0;
+		bottom: 8px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
 	&__point {
 		padding: 5px;
 

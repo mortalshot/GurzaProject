@@ -2,6 +2,10 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 li {
@@ -13,6 +17,7 @@ body {
     font-family: Montserrat;
     font-weight: 400;
     font-size: 14px;
+    line-height: 22px;
     color: $text-color;
 
     &.lock {
@@ -63,6 +68,10 @@ body {
             padding-left: 8px;
         }
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .button-bg {
@@ -72,8 +81,13 @@ body {
 
 .title {
     font-weight: 600;
-    font-size: calc(24px + 14 * ((100vw - 320px) / (1440 - 320)));
-    line-height: calc(57 / 38);
+    font-size: 38px;
+    line-height: 57px;
+    
+    @media screen and (max-width: 1440px) {
+        font-size: calc(24px + 14 * ((100vw - 320px) / (1440 - 320)));
+        line-height: calc(57 / 38);
+    }
 }
 .title-with-points {
     position: relative;
@@ -156,4 +170,8 @@ body {
 
 .d-flex {
     display: flex;
+}
+
+.accent {
+    color: $accent-color;
 }

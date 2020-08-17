@@ -814,7 +814,366 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     return o;
   };
-}); // custom scripts
+});
+/*!
+ * JavaScript Custom Forms
+ *
+ * Copyright 2014-2015 PSD2HTML - http://psd2html.com/jcf
+ * Released under the MIT license (LICENSE.txt)
+ *
+ * Version: 1.2.3
+ */
+
+!function (e, t) {
+  "use strict";
+
+  "function" == typeof define && define.amd ? define(["jquery"], t) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = t(require("jquery")) : e.jcf = t(jQuery);
+}(void 0, function (e) {
+  "use strict";
+
+  var t = "1.2.3",
+      n = [],
+      o = {
+    optionsKey: "jcf",
+    dataKey: "jcf-instance",
+    rtlClass: "jcf-rtl",
+    focusClass: "jcf-focus",
+    pressedClass: "jcf-pressed",
+    disabledClass: "jcf-disabled",
+    hiddenClass: "jcf-hidden",
+    resetAppearanceClass: "jcf-reset-appearance",
+    unselectableClass: "jcf-unselectable"
+  },
+      a = "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch,
+      i = /Windows Phone/.test(navigator.userAgent);
+  o.isMobileDevice = !(!a && !i);
+
+  var r = function r() {
+    var t = e("<style>").appendTo("head"),
+        n = t.prop("sheet") || t.prop("styleSheet"),
+        a = function a(e, t, o) {
+      o = o || 0, n.insertRule ? n.insertRule(e + "{" + t + "}", o) : n.addRule(e, t, o);
+    };
+
+    a("." + o.hiddenClass, "position:absolute !important;left:-9999px !important;height:1px !important;width:1px !important;margin:0 !important;border-width:0 !important;-webkit-appearance:none;-moz-appearance:none;appearance:none"), a("." + o.rtlClass + " ." + o.hiddenClass, "right:-9999px !important; left: auto !important"), a("." + o.unselectableClass, "-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0);"), a("." + o.resetAppearanceClass, "background: none; border: none; -webkit-appearance: none; appearance: none; opacity: 0; filter: alpha(opacity=0);");
+    var i = e("html"),
+        r = e("body");
+    "rtl" !== i.css("direction") && "rtl" !== r.css("direction") || i.addClass(o.rtlClass), i.on("reset", function () {
+      setTimeout(function () {
+        c.refreshAll();
+      }, 0);
+    }), o.styleSheetCreated = !0;
+  };
+
+  !function () {
+    var t,
+        n = navigator.pointerEnabled || navigator.msPointerEnabled,
+        o = "ontouchstart" in window || window.DocumentTouch && document instanceof window.DocumentTouch,
+        a = {},
+        i = "jcf-";
+    t = n ? {
+      pointerover: navigator.pointerEnabled ? "pointerover" : "MSPointerOver",
+      pointerdown: navigator.pointerEnabled ? "pointerdown" : "MSPointerDown",
+      pointermove: navigator.pointerEnabled ? "pointermove" : "MSPointerMove",
+      pointerup: navigator.pointerEnabled ? "pointerup" : "MSPointerUp"
+    } : {
+      pointerover: "mouseover",
+      pointerdown: "mousedown" + (o ? " touchstart" : ""),
+      pointermove: "mousemove" + (o ? " touchmove" : ""),
+      pointerup: "mouseup" + (o ? " touchend" : "")
+    }, e.each(t, function (t, n) {
+      e.each(n.split(" "), function (e, n) {
+        a[n] = t;
+      });
+    }), e.each(t, function (t, n) {
+      n = n.split(" "), e.event.special[i + t] = {
+        setup: function setup() {
+          var t = this;
+          e.each(n, function (e, n) {
+            t.addEventListener ? t.addEventListener(n, c, !1) : t["on" + n] = c;
+          });
+        },
+        teardown: function teardown() {
+          var t = this;
+          e.each(n, function (e, n) {
+            t.addEventListener ? t.removeEventListener(n, c, !1) : t["on" + n] = null;
+          });
+        }
+      };
+    });
+
+    var r = null,
+        s = function s(e) {
+      var t = Math.abs(e.pageX - r.x),
+          n = Math.abs(e.pageY - r.y),
+          o = 25;
+      return o >= t && o >= n ? !0 : void 0;
+    },
+        c = function c(t) {
+      var n = t || window.event,
+          o = null,
+          c = a[n.type];
+      if (t = e.event.fix(n), t.type = i + c, n.pointerType) switch (n.pointerType) {
+        case 2:
+          t.pointerType = "touch";
+          break;
+
+        case 3:
+          t.pointerType = "pen";
+          break;
+
+        case 4:
+          t.pointerType = "mouse";
+          break;
+
+        default:
+          t.pointerType = n.pointerType;
+      } else t.pointerType = n.type.substr(0, 5);
+      return t.pageX || t.pageY || (o = n.changedTouches ? n.changedTouches[0] : n, t.pageX = o.pageX, t.pageY = o.pageY), "touchend" === n.type && (r = {
+        x: t.pageX,
+        y: t.pageY
+      }), "mouse" === t.pointerType && r && s(t) ? void 0 : (e.event.dispatch || e.event.handle).call(this, t);
+    };
+  }(), function () {
+    var t = ("onwheel" in document || document.documentMode >= 9 ? "wheel" : "mousewheel DOMMouseScroll").split(" "),
+        n = "jcf-mousewheel";
+    e.event.special[n] = {
+      setup: function setup() {
+        var n = this;
+        e.each(t, function (e, t) {
+          n.addEventListener ? n.addEventListener(t, o, !1) : n["on" + t] = o;
+        });
+      },
+      teardown: function teardown() {
+        var n = this;
+        e.each(t, function (e, t) {
+          n.addEventListener ? n.removeEventListener(t, o, !1) : n["on" + t] = null;
+        });
+      }
+    };
+
+    var o = function o(t) {
+      var o = t || window.event;
+
+      if (t = e.event.fix(o), t.type = n, "detail" in o && (t.deltaY = -o.detail), "wheelDelta" in o && (t.deltaY = -o.wheelDelta), "wheelDeltaY" in o && (t.deltaY = -o.wheelDeltaY), "wheelDeltaX" in o && (t.deltaX = -o.wheelDeltaX), "deltaY" in o && (t.deltaY = o.deltaY), "deltaX" in o && (t.deltaX = o.deltaX), t.delta = t.deltaY || t.deltaX, 1 === o.deltaMode) {
+        var a = 16;
+        t.delta *= a, t.deltaY *= a, t.deltaX *= a;
+      }
+
+      return (e.event.dispatch || e.event.handle).call(this, t);
+    };
+  }();
+  var s = {
+    fireNativeEvent: function fireNativeEvent(t, n) {
+      e(t).each(function () {
+        var e,
+            t = this;
+        t.dispatchEvent ? (e = document.createEvent("HTMLEvents"), e.initEvent(n, !0, !0), t.dispatchEvent(e)) : document.createEventObject && (e = document.createEventObject(), e.target = t, t.fireEvent("on" + n, e));
+      });
+    },
+    bindHandlers: function bindHandlers() {
+      var t = this;
+      e.each(t, function (n, o) {
+        0 === n.indexOf("on") && e.isFunction(o) && (t[n] = function () {
+          return o.apply(t, arguments);
+        });
+      });
+    }
+  },
+      c = {
+    version: t,
+    modules: {},
+    getOptions: function getOptions() {
+      return e.extend({}, o);
+    },
+    setOptions: function setOptions(t, n) {
+      arguments.length > 1 ? this.modules[t] && e.extend(this.modules[t].prototype.options, n) : e.extend(o, t);
+    },
+    addModule: function addModule(t) {
+      e.isFunction(t) && (t = t(e, window));
+
+      var a = function a(t) {
+        t.element.data(o.dataKey) || t.element.data(o.dataKey, this), n.push(this), this.options = e.extend({}, o, this.options, i(t.element), t), this.bindHandlers(), this.init.apply(this, arguments);
+      },
+          i = function i(t) {
+        var n = t.data(o.optionsKey),
+            a = t.attr(o.optionsKey);
+        if (n) return n;
+        if (a) try {
+          return e.parseJSON(a);
+        } catch (i) {}
+      };
+
+      a.prototype = t, e.extend(t, s), t.plugins && e.each(t.plugins, function (t, n) {
+        e.extend(n.prototype, s);
+      });
+      var r = a.prototype.destroy;
+      a.prototype.destroy = function () {
+        this.options.element.removeData(this.options.dataKey);
+
+        for (var e = n.length - 1; e >= 0; e--) {
+          if (n[e] === this) {
+            n.splice(e, 1);
+            break;
+          }
+        }
+
+        r && r.apply(this, arguments);
+      }, this.modules[t.name] = a;
+    },
+    getInstance: function getInstance(t) {
+      return e(t).data(o.dataKey);
+    },
+    replace: function replace(t, n, a) {
+      var i,
+          s = this;
+      return o.styleSheetCreated || r(), e(t).each(function () {
+        var t,
+            r = e(this);
+        i = r.data(o.dataKey), i ? i.refresh() : (n || e.each(s.modules, function (e, t) {
+          return t.prototype.matchElement.call(t.prototype, r) ? (n = e, !1) : void 0;
+        }), n && (t = e.extend({
+          element: r
+        }, a), i = new s.modules[n](t)));
+      }), i;
+    },
+    refresh: function refresh(t) {
+      e(t).each(function () {
+        var t = e(this).data(o.dataKey);
+        t && t.refresh();
+      });
+    },
+    destroy: function destroy(t) {
+      e(t).each(function () {
+        var t = e(this).data(o.dataKey);
+        t && t.destroy();
+      });
+    },
+    replaceAll: function replaceAll(t) {
+      var n = this;
+      e.each(this.modules, function (o, a) {
+        e(a.prototype.selector, t).each(function () {
+          this.className.indexOf("jcf-ignore") < 0 && n.replace(this, o);
+        });
+      });
+    },
+    refreshAll: function refreshAll(t) {
+      if (t) e.each(this.modules, function (n, a) {
+        e(a.prototype.selector, t).each(function () {
+          var t = e(this).data(o.dataKey);
+          t && t.refresh();
+        });
+      });else for (var a = n.length - 1; a >= 0; a--) {
+        n[a].refresh();
+      }
+    },
+    destroyAll: function destroyAll(t) {
+      if (t) e.each(this.modules, function (n, a) {
+        e(a.prototype.selector, t).each(function (t, n) {
+          var a = e(n).data(o.dataKey);
+          a && a.destroy();
+        });
+      });else for (; n.length;) {
+        n[0].destroy();
+      }
+    }
+  };
+  return "function" == typeof define && define.amd && (window.jcf = c), c;
+});
+/*!
+ * JavaScript Custom Forms : File Module
+ *
+ * Copyright 2014-2015 PSD2HTML - http://psd2html.com/jcf
+ * Released under the MIT license (LICENSE.txt)
+ *
+ * Version: 1.2.3
+ */
+
+!function (e) {
+  e.addModule(function (e) {
+    "use strict";
+
+    return {
+      name: "File",
+      selector: 'input[type="file"]',
+      options: {
+        fakeStructure: '<span class="jcf-file"><span class="jcf-fake-input"></span><span class="jcf-upload-button"><span class="jcf-button-content"></span></span></span>',
+        buttonText: "Choose file",
+        placeholderText: "No file chosen",
+        realElementClass: "jcf-real-element",
+        extensionPrefixClass: "jcf-extension-",
+        selectedFileBlock: ".jcf-fake-input",
+        buttonTextBlock: ".jcf-button-content"
+      },
+      matchElement: function matchElement(e) {
+        return e.is('input[type="file"]');
+      },
+      init: function init() {
+        this.initStructure(), this.attachEvents(), this.refresh();
+      },
+      initStructure: function initStructure() {
+        this.doc = e(document), this.realElement = e(this.options.element).addClass(this.options.realElementClass), this.fakeElement = e(this.options.fakeStructure).insertBefore(this.realElement), this.fileNameBlock = this.fakeElement.find(this.options.selectedFileBlock), this.buttonTextBlock = this.fakeElement.find(this.options.buttonTextBlock).text(this.options.buttonText), this.realElement.appendTo(this.fakeElement).css({
+          position: "absolute",
+          opacity: 0
+        });
+      },
+      attachEvents: function attachEvents() {
+        this.realElement.on({
+          "jcf-pointerdown": this.onPress,
+          change: this.onChange,
+          focus: this.onFocus
+        });
+      },
+      onChange: function onChange() {
+        this.refresh();
+      },
+      onFocus: function onFocus() {
+        this.fakeElement.addClass(this.options.focusClass), this.realElement.on("blur", this.onBlur);
+      },
+      onBlur: function onBlur() {
+        this.fakeElement.removeClass(this.options.focusClass), this.realElement.off("blur", this.onBlur);
+      },
+      onPress: function onPress() {
+        this.fakeElement.addClass(this.options.pressedClass), this.doc.on("jcf-pointerup", this.onRelease);
+      },
+      onRelease: function onRelease() {
+        this.fakeElement.removeClass(this.options.pressedClass), this.doc.off("jcf-pointerup", this.onRelease);
+      },
+      getFileName: function getFileName() {
+        var t = "",
+            s = this.realElement.prop("files");
+        return s && s.length ? e.each(s, function (e, s) {
+          t += (e > 0 ? ", " : "") + s.name;
+        }) : t = this.realElement.val().replace(/^[\s\S]*(?:\\|\/)([\s\S^\\\/]*)$/g, "$1"), t;
+      },
+      getFileExtension: function getFileExtension() {
+        var e = this.realElement.val();
+        return e.lastIndexOf(".") < 0 ? "" : e.substring(e.lastIndexOf(".") + 1).toLowerCase();
+      },
+      updateExtensionClass: function updateExtensionClass() {
+        var e = this.getFileExtension(),
+            t = this.fakeElement.prop("className"),
+            s = t.replace(new RegExp("(\\s|^)" + this.options.extensionPrefixClass + "[^ ]+", "gi"), "");
+        this.fakeElement.prop("className", s), e && this.fakeElement.addClass(this.options.extensionPrefixClass + e);
+      },
+      refresh: function refresh() {
+        var e = this.getFileName() || this.options.placeholderText;
+        this.fakeElement.toggleClass(this.options.disabledClass, this.realElement.is(":disabled")), this.fileNameBlock.text(e), this.updateExtensionClass();
+      },
+      destroy: function destroy() {
+        this.realElement.insertBefore(this.fakeElement).removeClass(this.options.realElementClass).css({
+          position: "",
+          opacity: ""
+        }), this.fakeElement.remove(), this.realElement.off({
+          "jcf-pointerdown": this.onPress,
+          change: this.onChange,
+          focus: this.onFocus,
+          blur: this.onBlur
+        }), this.doc.off("jcf-pointerup", this.onRelease);
+      }
+    };
+  });
+}(jcf); // custom scripts
 
 function testWebP(callback) {
   var webP = new Image();
@@ -1210,6 +1569,125 @@ if (animItems.length > 0) {
   }, 300);
 }
 
+$('#myfile').change(function () {
+  var ext = this.value.match(/\.([^\.]+)$/)[1];
+
+  switch (ext) {
+    case 'doc':
+    case 'docx':
+    case 'xls':
+    case 'xlsx':
+    case 'pdf':
+    case 'zip':
+    case 'rar':
+    case '7z':
+    case 'jpg':
+    case 'jpeg':
+    case 'png':
+      break;
+
+    default:
+      alert('Разрешенный формат файла: doc, docx, xls, xlsx, pdf, zip, rar, 7z, jpg, jpeg, png');
+      this.value = '';
+  }
+
+  var $fileUpload = $("input[type='file']");
+
+  if (parseInt($fileUpload.get(0).files.length) > 8) {
+    alert("Можно отправить не больше 8 файлов, вы можете добавить архив");
+    this.value = '';
+  }
+}); //Отправка данных на сервер
+
+$('#form').trigger('reset');
+$(function () {
+  'use strict';
+
+  $('#form').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: 'send.php',
+      type: 'POST',
+      contentType: false,
+      processData: false,
+      data: new FormData(this),
+      success: function success(msg) {
+        console.log(msg);
+
+        if (msg == 'ok') {
+          $('#ModalThanks').modal('show');
+          $('#form').trigger('reset'); // очистка формы
+        } else {
+          alert('Ваш файл слишком большой');
+        }
+      }
+    });
+  });
+});
+
+function adjustLine(from, to, line) {
+  var fT = from.offsetTop + from.offsetHeight / 2;
+  var tT = to.offsetTop + to.offsetHeight / 2;
+  var fL = from.offsetLeft + from.offsetWidth / 2;
+  var tL = to.offsetLeft + to.offsetWidth / 2;
+  var CA = Math.abs(tT - fT);
+  var CO = Math.abs(tL - fL);
+  var H = Math.sqrt(CA * CA + CO * CO);
+  var ANG = 180 / Math.PI * Math.acos(CA / H);
+
+  if (tT > fT) {
+    var top = (tT - fT) / 2 + fT;
+  } else {
+    var top = (fT - tT) / 2 + tT;
+  }
+
+  if (tL > fL) {
+    var left = (tL - fL) / 2 + fL;
+  } else {
+    var left = (fL - tL) / 2 + tL;
+  }
+
+  if (fT < tT && fL < tL || tT < fT && tL < fL || fT > tT && fL > tL || tT > fT && tL > fL) {
+    ANG *= -1;
+  }
+
+  top -= H / 2;
+  line.style["-webkit-transform"] = 'rotate(' + ANG + 'deg)';
+  line.style["-moz-transform"] = 'rotate(' + ANG + 'deg)';
+  line.style["-ms-transform"] = 'rotate(' + ANG + 'deg)';
+  line.style["-o-transform"] = 'rotate(' + ANG + 'deg)';
+  line.style["-transform"] = 'rotate(' + ANG + 'deg)';
+  line.style.top = top + 15 + 'px';
+  line.style.left = left + 'px';
+  line.style.height = H - 15 + 'px';
+}
+
+setInterval(function () {
+  adjustLine(document.getElementById('shop__chevron1'), document.getElementById('shop__chevron2'), document.getElementById('line1'));
+  adjustLine(document.getElementById('shop__chevron1'), document.getElementById('shop__chevron3'), document.getElementById('line2'));
+  adjustLine(document.getElementById('shop__chevron2'), document.getElementById('shop__chevron3'), document.getElementById('line3'));
+  adjustLine(document.getElementById('shop__chevron2'), document.getElementById('shop__chevron4'), document.getElementById('line4'));
+  adjustLine(document.getElementById('shop__chevron3'), document.getElementById('shop__chevron4'), document.getElementById('line5'));
+  adjustLine(document.getElementById('shop__chevron4'), document.getElementById('shop__chevron5'), document.getElementById('line6'));
+  adjustLine(document.getElementById('shop__chevron4'), document.getElementById('shop__chevron7'), document.getElementById('line7'));
+  adjustLine(document.getElementById('shop__chevron4'), document.getElementById('shop__chevron8'), document.getElementById('line8'));
+  adjustLine(document.getElementById('shop__chevron7'), document.getElementById('shop__chevron8'), document.getElementById('line9'));
+  adjustLine(document.getElementById('shop__chevron8'), document.getElementById('shop__chevron5'), document.getElementById('line10'));
+  adjustLine(document.getElementById('shop__chevron5'), document.getElementById('shop__chevron6'), document.getElementById('line11'));
+  adjustLine(document.getElementById('shop__chevron5'), document.getElementById('shop__chevron9'), document.getElementById('line12'));
+  adjustLine(document.getElementById('shop__chevron6'), document.getElementById('shop__chevron10'), document.getElementById('line13'));
+  adjustLine(document.getElementById('shop__chevron9'), document.getElementById('shop__chevron10'), document.getElementById('line14'));
+  adjustLine(document.getElementById('shop__chevron3'), document.getElementById('shop__chevron7'), document.getElementById('line15'));
+  adjustLine(document.getElementById('shop__chevron7'), document.getElementById('shop__chevron11'), document.getElementById('line16'));
+  adjustLine(document.getElementById('shop__chevron8'), document.getElementById('shop__chevron12'), document.getElementById('line17'));
+  adjustLine(document.getElementById('shop__chevron9'), document.getElementById('shop__chevron12'), document.getElementById('line18'));
+  adjustLine(document.getElementById('shop__chevron10'), document.getElementById('shop__chevron12'), document.getElementById('line19'));
+  adjustLine(document.getElementById('shop__chevron9'), document.getElementById('shop__chevron6'), document.getElementById('line20'));
+  adjustLine(document.getElementById('shop__chevron12'), document.getElementById('shop__chevron11'), document.getElementById('line21'));
+  adjustLine(document.getElementById('shop__chevron12'), document.getElementById('shop__chevron13'), document.getElementById('line22'));
+  adjustLine(document.getElementById('shop__chevron11'), document.getElementById('shop__chevron13'), document.getElementById('line23'));
+  adjustLine(document.getElementById('shop__chevron13'), document.getElementById('shop__chevron14'), document.getElementById('line24'));
+}, 500);
 $(document).ready(function () {
   $('.catalog__cards').slick({
     autoplay: false,
@@ -1231,6 +1709,15 @@ $(document).ready(function () {
     var dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
     $('.catalog__cards .slick-dots li').width(dotsWidth + '%');
   });
+  $('.item-photoes').slick({
+    autoplay: false,
+    infinite: false,
+    arrows: true,
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: false
+  });
   $(function () {
     var slidesNumber = $('.item-photoes').length;
     var slidesClonedNumber = $('.item-photoes.slick-cloned').length;
@@ -1243,16 +1730,7 @@ $(document).ready(function () {
     var i = (currentSlide ? currentSlide : 0) + 1;
     $status.text('Фото ' + i + ' из ' + slick.slideCount);
   });
-  $('.item-photoes').slick({
-    autoplay: false,
-    infinite: false,
-    arrows: true,
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    variableWidth: false
-  });
-  $('.features-rashguard').slick({
+  $('.features-markup').slick({
     autoplay: false,
     infinite: false,
     arrows: false,
@@ -1264,4 +1742,108 @@ $(document).ready(function () {
       settings: "unslick"
     }]
   });
+  $('.rashguard__photoes').slick({
+    autoplay: false,
+    infinite: true,
+    arrows: true,
+    dots: true,
+    centerMode: true,
+    variableWidth: false,
+    slidesToShow: 3,
+    initialSlide: 1,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3,
+        initialSlide: 0,
+        infinite: false,
+        arrows: false
+      }
+    }, {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 3,
+        infinite: false,
+        arrows: false,
+        centerMode: true,
+        initialSlide: 0
+      }
+    }, {
+      breakpoint: 450,
+      settings: {
+        slidesToShow: 3,
+        infinite: false,
+        arrows: false,
+        centerMode: true,
+        initialSlide: 0,
+        variableWidth: true
+      }
+    }]
+  });
+  $('.rashguard__features').slick({
+    autoplay: false,
+    infinite: false,
+    arrows: false,
+    dots: false,
+    variableWidth: true,
+    mobileFirst: true,
+    slidesToShow: 2,
+    responsive: [{
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 2,
+        centerMode: false,
+        variableWidth: false
+      }
+    }, {
+      breakpoint: 992,
+      settings: "unslick"
+    }]
+  }); // rashguard aim animation
+
+  $('.rashguard__photoes').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    $('.rashguard__aim').css({
+      transform: "translate(-50%, -50%) scale(0.7)"
+    });
+  });
+  $('.rashguard__photoes').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+    $('.rashguard__aim').css({
+      transform: "translate(-50%, -50%) scale(1)"
+    });
+  }); // rashguard dots width
+
+  $(function () {
+    var slidesNumber = $('.rashguard__item').length;
+    var slidesClonedNumber = $('.rashguard__item.slick-cloned').length;
+    var dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
+    $('.rashguard__photoes .slick-dots li').width(dotsWidth + '%');
+  });
+  $('.review__cards').slick({
+    autoplay: false,
+    infinite: false,
+    arrows: true,
+    dots: false,
+    centerMode: false,
+    variableWidth: false,
+    slidesToShow: 2,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: false,
+        dots: true,
+        slidesToShow: 1
+      }
+    }, {
+      breakpoint: 450,
+      settings: {
+        arrows: false,
+        centerMode: false,
+        dots: true,
+        slidesToShow: 1,
+        adaptiveHeight: true
+      }
+    }]
+  });
+  jcf.replaceAll();
 });

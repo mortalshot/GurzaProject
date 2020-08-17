@@ -1,23 +1,43 @@
 .input-wrapper {
     position: relative;
+    padding: 0 10px;
 
     &__text {
         width: 100%;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 28px;
-        margin-bottom: 10px;
-        color: #000;
-        border: 1px solid #000;
+        max-width: 264px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 1px;
+        color: #fff;
+        background: transparent;
         border-radius: 0;
-        padding: 9px 16px;
-        @media screen and (max-width: 575px) {
-            padding: 5px 16px;
+        padding: 15px 10px;
+        border: none;
+        border-bottom: 1px solid #615D5D;
+
+        @media screen and (max-width: 1440px) {
+            font-size: calc(12px + 8 * ((100vw - 320px) / (1440 - 320)));
+            line-height: calc(24 / 20);
         }
+
+        @media screen and (max-width: 575px) {
+            padding: 12px 9px;
+        }
+        
         &::placeholder {
-            color: #7d838c;
+            font-weight: 400;
+            color: #fff;
             opacity: 1;
             transition: 0.5s ease all 0s;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+
+            @media screen and (max-width: 1440px) {
+                font-size: calc(12px + 6 * ((100vw - 320px) / (1440 - 320)));
+                line-height: calc(22 / 18);
+            }
         }
 
         &:focus {
@@ -26,6 +46,13 @@
                 opacity: 0;
             }
         }
+    }
+
+    &__textarea {
+        max-width: 558px;
+        height: 52px;
+        resize: vertical;
+        overflow: hidden;
     }
 
     input[type="radio"] {
