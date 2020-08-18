@@ -17,6 +17,7 @@ $(document).ready(function () {
 			},
 		]
 	});
+	// Ширина точек слайдера каталога
 	$(function () {
 		let slidesNumber = $('.catalog__card').length;
 		let slidesClonedNumber = $('.catalog__card.slick-cloned').length;
@@ -33,12 +34,15 @@ $(document).ready(function () {
 		slidesToScroll: 1,
 		variableWidth: false,
 	});
+	// Ширина точек слайдера в модальном окне
 	$(function () {
 		let slidesNumber = $('.item-photoes').length;
 		let slidesClonedNumber = $('.item-photoes.slick-cloned').length;
 		let dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
 		$('.item-photoes .slick-dots li').width(dotsWidth + '%');
 	})
+
+	// Добавление счетчика фотографий в модальном окне товара
 	var $status = $('.pagingInfo');
 	var $slickElement = $('.item-photoes');
 	$slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
@@ -128,7 +132,7 @@ $(document).ready(function () {
 		]
 	});
 
-	// rashguard aim animation
+	// Анимация прицела rashguard при переключении слайдов
 	$('.rashguard__photoes').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 		$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(0.7)" });
 	});
@@ -136,7 +140,7 @@ $(document).ready(function () {
 		$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(1)" });
 	});
 
-	// rashguard dots width
+	// Ширина точек rashguard слайдера
 	$(function () {
 		let slidesNumber = $('.rashguard__item').length;
 		let slidesClonedNumber = $('.rashguard__item.slick-cloned').length;
@@ -175,5 +179,72 @@ $(document).ready(function () {
 		]
 	});
 
+	// Замена стандартного файлового инпута
 	jcf.replaceAll();
+	$(".mask-phone").mask("+7(999) 999-9999");
+
+	// Определение, откуда упала заявка на почту
+	$('.popup-link[href="#request"]').click(function (event) {
+		console.log("click");
+		let recipient = $(this).data('whatever');
+		let modal = $('#request');
+		modal.find('#whatever').val(recipient);
+	});
+
+	// Ограничение формата отправляемых файлов
+	$('#myfile').change(function () {
+		var ext = this.value.match(/\.([^\.]+)$/)[1];
+		switch (ext) {
+			case 'doc':
+			case 'docx':
+			case 'xls':
+			case 'xlsx':
+			case 'pdf':
+			case 'zip':
+			case 'rar':
+			case '7z':
+			case 'jpg':
+			case 'jpeg':
+			case 'png':
+			case 'webp':
+				break;
+			default:
+				alert('Разрешенный формат файла: doc, docx, xls, xlsx, pdf, zip, rar, 7z, jpg, jpeg, png, webp');
+				this.value = '';
+		}
+		var $fileUpload = $("input[type='file']");
+		if (parseInt($fileUpload.get(0).files.length) > 8) {
+			alert("Можно отправить не больше 8 файлов, вы можете добавить архив");
+			this.value = '';
+		}
+	});
+	//Отправка данных на сервер
+	$('#form').trigger('reset');
+	$(function () {
+		'use strict';
+		$('#form').on('submit', function (e) {
+			e.preventDefault();
+			$.ajax({
+				url: 'send.php',
+				type: 'POST',
+				contentType: false,
+				processData: false,
+				data: new FormData(this),
+				success: function (msg) {
+					console.log(msg);
+					if (msg == 'ok') {
+						$('#ModalThanks').modal('show');
+						$('#form').trigger('reset'); // очистка формы
+					} else {
+						alert('Ваш файл слишком большой');
+					}
+				}
+			});
+		});
+	});
+
+	// Удаление таблички у виджета инстаграмма
+	setTimeout(() => {
+		$('a[href$="=free-widget"]').css("display", "none");
+	}, 1000);
 });

@@ -28,7 +28,8 @@
 			transition: 0.3s ease all 0s;
 
 			&::before,
-			&::after, span {
+			&::after,
+			span {
 				content: "";
 				background-color: $text-color;
 				position: absolute;
@@ -118,6 +119,11 @@
 		line-height: 1;
 		color: $text-color;
 		text-decoration: none;
+		transition: 0.3s ease all 0s;
+
+		&:hover {
+			color: $bg-color;
+		}
 
 		@media screen and (max-width: 767px) {
 			font-size: 20px;
@@ -129,6 +135,7 @@
 	&__link {
 		display: flex;
 		align-items: center;
+		text-decoration: none;
 	}
 
 	&__img {
@@ -137,7 +144,7 @@
 		@media screen and (max-width: 575px) {
 			max-width: 40px;
 			padding-right: 10px;
-			
+
 			img {
 				display: block;
 				width: 100%;
@@ -155,6 +162,24 @@
 				width: 100%;
 				height: auto;
 			}
+		}
+	}
+
+	// .logo__text
+	&__text {
+		font-weight: 700;
+		font-size: 8px;
+		line-height: 10px;
+		color: #fff;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@media screen and (max-width: 450px) {
+			margin-bottom: 2px;
 		}
 	}
 }

@@ -318,7 +318,7 @@
 
 	&__rect {
 		padding: 5px;
-		
+
 		@media screen and (max-width: 450px) {
 			padding: 3px;
 		}
@@ -813,7 +813,7 @@
 
 	&__sex {
 		padding: 0 15px;
-		
+
 		@media screen and (max-width: 450px) {
 			padding: 0 15px 10px;
 		}
@@ -887,6 +887,7 @@
 
 	&__row {
 		display: flex;
+		justify-content: space-between;
 	}
 
 	&__item {
@@ -894,6 +895,9 @@
 		margin-right: 20px;
 		font-size: 18px;
 		line-height: 27px;
+		&:last-child {
+			margin-right: 0;
+		}
 
 		@media screen and (min-width: 767px) and (max-width: 991px) {
 			margin-right: 10px;
