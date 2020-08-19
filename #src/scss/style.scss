@@ -793,6 +793,8 @@
 
 	// .shop__contrainer
 	&__container {
+		position: relative;
+		z-index: 2;
 		overflow: hidden;
 	}
 
@@ -1577,7 +1579,7 @@
 }
 
 .faq {
-	margin-bottom: 129px;
+	margin-bottom: 69px;
 	// .faq__title
 	&__title {
 		margin-bottom: 70px;
@@ -1601,6 +1603,7 @@
 }
 
 .contacts {
+	padding: 69px 0 0;
 	margin-bottom: 100px;
 	// .contacts__container
 	&__container {

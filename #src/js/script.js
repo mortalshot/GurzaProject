@@ -43,8 +43,8 @@ $(document).ready(function () {
 	})
 
 	// Добавление счетчика фотографий в модальном окне товара
-	var $status = $('.pagingInfo');
-	var $slickElement = $('.item-photoes');
+	let $status = $('.pagingInfo');
+	let $slickElement = $('.item-photoes');
 	$slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
 		var i = (currentSlide ? currentSlide : 0) + 1;
 		$status.text('Фото ' + i + ' из ' + slick.slideCount);
