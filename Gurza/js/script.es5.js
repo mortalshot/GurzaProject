@@ -1954,15 +1954,16 @@ $('.accordion__title').click(function (event) {
 $(document).ready(function () {
   $('.catalog__cards').slick({
     autoplay: false,
-    infinite: false,
+    infinite: true,
     arrows: true,
+    centerMode: true,
     variableWidth: true,
+    initialSlide: 1,
     responsive: [{
       breakpoint: 768,
       settings: {
         arrows: false,
-        dots: true,
-        infinite: true
+        dots: true
       }
     }]
   }); // Ширина точек слайдера каталога
@@ -1988,13 +1989,33 @@ $(document).ready(function () {
     var slidesClonedNumber = $('.item-photoes.slick-cloned').length;
     var dotsWidth = 100 / (slidesNumber - slidesClonedNumber);
     $('.item-photoes .slick-dots li').width(dotsWidth + '%');
-  }); // Добавление счетчика фотографий в модальном окне товара
+  }); // Добавление счетчика фотографий в модальном окне товара 1
 
-  var $status = $('.pagingInfo');
-  var $slickElement = $('.item-photoes');
-  $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-    var i = (currentSlide ? currentSlide : 0) + 1;
-    $status.text('Фото ' + i + ' из ' + slick.slideCount);
+  $(function () {
+    var $status = $('#product-1 .pagingInfo');
+    var $slickElement = $('#product-1 .item-photoes');
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      $status.text('Фото ' + i + ' из ' + slick.slideCount);
+    });
+  }); // Добавление счетчика фотографий в модальном окне товара 2
+
+  $(function () {
+    var $status = $('#product-2 .pagingInfo');
+    var $slickElement = $('#product-2 .item-photoes');
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      $status.text('Фото ' + i + ' из ' + slick.slideCount);
+    });
+  }); // Добавление счетчика фотографий в модальном окне товара 3
+
+  $(function () {
+    var $status = $('#product-3 .pagingInfo');
+    var $slickElement = $('#product-3 .item-photoes');
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      $status.text('Фото ' + i + ' из ' + slick.slideCount);
+    });
   });
   $('.features-markup').slick({
     autoplay: false,
@@ -2116,10 +2137,24 @@ $(document).ready(function () {
   $(".mask-phone").mask("+7(999) 999-9999"); // Определение, откуда упала заявка на почту
 
   $('.popup-link[href="#request"]').click(function (event) {
-    console.log("click");
     var recipient = $(this).data('whatever');
     var modal = $('#request');
     modal.find('#whatever').val(recipient);
+  }); //E - mail Ajax Send
+
+  $("form").submit(function () {
+    var th = $(this);
+    $.ajax({
+      type: "POST",
+      url: "mail.php",
+      data: th.serialize()
+    }).done(function () {
+      setTimeout(function () {
+        th.trigger("reset");
+      }, 800);
+      $('a[href="#thanks"]')[0].click();
+    });
+    return false;
   }); // Ограничение формата отправляемых файлов
 
   $('#myfile').change(function () {
@@ -2151,7 +2186,7 @@ $(document).ready(function () {
       alert("Можно отправить не больше 8 файлов, вы можете добавить архив");
       this.value = '';
     }
-  }); //Отправка данных на сервер
+  }); //Отправка данных на сервер с помощью phpmailer
 
   $('#form').trigger('reset');
   $(function () {
@@ -2169,10 +2204,10 @@ $(document).ready(function () {
           console.log(msg);
 
           if (msg == 'ok') {
-            $('#ModalThanks').modal('show');
+            $('a[href="#thanks"]')[0].click();
             $('#form').trigger('reset'); // очистка формы
           } else {
-            alert('Ваш файл слишком большой');
+            alert('Что-то пошло не так');
           }
         }
       });

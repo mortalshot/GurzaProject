@@ -249,6 +249,7 @@
 
 	&__text {
 		padding-bottom: 60px;
+		max-width: 506px;
 		line-height: calc(22 / 14);
 
 		@media screen and (max-width: 767px) {
@@ -735,17 +736,16 @@
 		}
 	}
 
-	&__text {
-	}
-
 	&__button {
 		width: 216px;
 		height: 61px;
 		margin-top: 80px;
+		@media screen and (max-width: 767px) {
+			margin-top: 30px;
+		}
 
 		@media screen and (max-width: 450px) {
 			width: 100%;
-			margin-top: 56px;
 		}
 	}
 
@@ -789,6 +789,7 @@
 
 	@media screen and (max-width: 575px) {
 		background: #0b0b0b !important;
+		padding: 0;
 	}
 
 	// .shop__contrainer
@@ -800,6 +801,9 @@
 
 	&__wrapper {
 		max-width: 300px;
+		@media screen and (max-width: 450px) {
+			margin-bottom: 40px;
+		}
 	}
 
 	&__bg {
@@ -819,17 +823,29 @@
 	// .shop__title
 	&__title {
 		margin-bottom: 31px;
+
+		@media screen and (max-width: 450px) {
+			margin-bottom: 19px;
+		}
 	}
 
 	// .shop__text
 	&__text {
 		margin-bottom: 37px;
+
+		@media screen and (max-width: 450px) {
+			margin-bottom: 27px;
+		}
 	}
 
 	// .shop__button
 	&__button {
 		width: 227px;
 		height: 61px;
+
+		@media screen and (max-width: 450px) {
+			width: 100%;
+		}
 	}
 
 	&__aim {
@@ -944,22 +960,37 @@
 		transition: 0.3s ease all 1s;
 
 		@media screen and (max-width: 767px) {
-			&#line3,
-			&#line1,
-			&#line4,
-			&#line5,
 			&#line6,
-			&#line7,
-			&#line8,
 			&#line10,
 			&#line11,
 			&#line12,
 			&#line13,
 			&#line14,
+			&#line15,
+			&#line17,
 			&#line18,
 			&#line19,
-			&#line20 {
+			&#line20,
+			&#line21,
+			&#line22,
+			&#line23,
+			&#line24 {
 				display: none;
+			}
+		}
+
+		@media screen and (max-width: 450px) {
+			&::before {
+				content: "";
+				display: block;
+				width: 3.5px;
+				height: 3.5px;
+				border-radius: 50%;
+				background-color: #656565;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
 			}
 		}
 	}
@@ -977,7 +1008,12 @@
 			display: block;
 			width: 16px;
 			height: 18px;
-			background: url(../img/icons/chevron.svg) no-repeat;
+			background: url(../img/icons/chevron.svg) no-repeat center/cover;
+
+			@media screen and (max-width: 450px) {
+				width: 13px;
+				height: 15px;
+			}
 		}
 
 		&.active {
@@ -994,6 +1030,15 @@
 			@media screen and (max-width: 767px) {
 				top: 67%;
 			}
+
+			@media screen and (max-width: 575px) {
+				top: 71%;
+				right: 60.4%;
+			}
+
+			@media screen and (max-width: 450px) {
+				top: 80%;
+			}
 		}
 	}
 
@@ -1004,7 +1049,17 @@
 			transition: 0.3s ease all 0.1s;
 
 			@media screen and (max-width: 767px) {
-				display: none;
+				top: 63.3%;
+				right: 24.4%;
+			}
+
+			@media screen and (max-width: 575px) {
+				top: 73.3%;
+				right: 24.4%;
+			}
+
+			@media screen and (max-width: 450px) {
+				top: 82.3%;
 			}
 		}
 	}
@@ -1016,7 +1071,17 @@
 			transition: 0.3s ease all 0.2s;
 
 			@media screen and (max-width: 767px) {
-				top: 58.3%;
+				top: 59.1%;
+				right: 33.6%;
+			}
+
+			@media screen and (max-width: 575px) {
+				top: 64.1%;
+				right: 43.6%;
+			}
+
+			@media screen and (max-width: 450px) {
+				top: 73.1%;
 			}
 		}
 	}
@@ -1028,7 +1093,16 @@
 			transition: 0.3s ease all 0.3s;
 
 			@media screen and (max-width: 767px) {
-				display: none;
+				top: 50.4%;
+				right: 18.6%;
+			}
+
+			@media screen and (max-width: 575px) {
+				top: 60.4%;
+			}
+
+			@media screen and (max-width: 450px) {
+				top: 69.4%;
 			}
 		}
 	}
@@ -1062,6 +1136,21 @@
 			top: 47.5%;
 			right: 22.1%;
 			transition: 0.3s ease all 0.6s;
+
+			@media screen and (max-width: 767px) {
+				top: 77.5%;
+				right: 19.1%;
+			}
+
+			@media screen and (max-width: 575px) {
+				top: 83.5%;
+				right: 12.1%;
+			}
+
+			@media screen and (max-width: 450px) {
+				right: -8%;
+				top: 92.5%;
+			}
 		}
 	}
 
@@ -1072,8 +1161,16 @@
 			transition: 0.3s ease all 0.7s;
 
 			@media screen and (max-width: 767px) {
-				top: 48.1%;
-				right: 12.3%;
+				top: 57.1%;
+				right: 2.3%;
+			}
+
+			@media screen and (max-width: 575px) {
+				right: -7.7%;
+			}
+
+			@media screen and (max-width: 450px) {
+				top: 75%;
 			}
 		}
 	}
@@ -1111,6 +1208,15 @@
 				top: 62.2%;
 				right: 24.4%;
 			}
+
+			@media screen and (max-width: 767px) {
+				top: 85.2%;
+				right: 7.4%;
+			}
+
+			@media screen and (max-width: 575px) {
+				right: -6%;
+			}
 		}
 	}
 
@@ -1123,10 +1229,7 @@
 			@media screen and (max-width: 767px) {
 				top: 58.2%;
 				right: 1%;
-			}
-
-			@media screen and (max-width: 575px) {
-				right: -20%;
+				display: none;
 			}
 		}
 	}
@@ -1142,7 +1245,9 @@
 			}
 
 			@media screen and (max-width: 767px) {
-				top: 75%;
+				top: 85%;
+				right: 8.1%;
+				display: none;
 			}
 		}
 	}
@@ -1160,6 +1265,7 @@
 
 			@media screen and (max-width: 767px) {
 				top: 91%;
+				display: none;
 			}
 		}
 	}
@@ -1605,6 +1711,10 @@
 .contacts {
 	padding: 69px 0 0;
 	margin-bottom: 100px;
+
+	@media screen and (max-width: 450px) {
+		padding-top: 0;
+	}
 	// .contacts__container
 	&__container {
 		overflow: hidden;
@@ -1879,13 +1989,10 @@
 
 	// .footer__social
 	&__social {
-		display: flex;
 		padding: 31vh 0 13vh;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
 		max-width: 870px;
 		margin: 0 auto;
+		justify-content: space-between;
 
 		@media screen and (max-width: 767px) {
 			max-width: 212px;
@@ -1991,6 +2098,10 @@
 	}
 }
 .social {
+	width: 100%;
+	display: flex;
+	align-items: center;
+
 	@media screen and (max-width: 767px) {
 		margin: 0 -12px;
 	}
@@ -2001,6 +2112,14 @@
 
 	// .social__item
 	&__item {
+		transition: 0.3s ease all 0s;
+
+		@media screen and (min-width: 768px) {
+			&:hover {
+				transform: translate(0, 5px);
+			}
+		}
+
 		@media screen and (max-width: 767px) {
 			padding: 0 12px;
 
