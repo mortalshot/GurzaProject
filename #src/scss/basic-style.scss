@@ -86,7 +86,7 @@ body {
     line-height: 57px;
     
     @media screen and (max-width: 1440px) {
-        font-size: calc(24px + 14 * ((100vw - 320px) / (1440 - 320)));
+        font-size: calc(22px + 16 * ((100vw - 320px) / (1440 - 320)));
         line-height: calc(57 / 38);
     }
 }

@@ -47,7 +47,7 @@
 			background: url(../img/main/aim/5.png) no-repeat center/cover;
 			width: 798px;
 			height: 716px;
-			animation: right-rotate 15s linear infinite;
+			animation: right-rotate 30s ease-in-out infinite;
 
 			@media screen and (max-width: 1200px) {
 				width: 638px;
@@ -79,7 +79,7 @@
 			width: 623px;
 			height: 625px;
 			background: url(../img/main/aim/1.png) no-repeat center/cover;
-			animation: left-rotate 10s linear infinite;
+			animation: left-rotate 20s ease-in-out infinite;
 
 			@media screen and (max-width: 1200px) {
 				width: 498px;
@@ -131,7 +131,7 @@
 			width: 485px;
 			height: 483px;
 			background: url(../img/main/aim/4.png) no-repeat center/cover;
-			animation: right-rotate 8s linear infinite;
+			animation: right-rotate 15s ease-in-out infinite;
 
 			@media screen and (max-width: 1200px) {
 				width: 388px;
@@ -163,7 +163,7 @@
 			width: 366px;
 			height: 366px;
 			background: url(../img/main/aim/3.png) no-repeat center/cover;
-			animation: left-rotate 6s linear infinite;
+			animation: left-rotate 10s ease-in-out infinite;
 
 			@media screen and (max-width: 1200px) {
 				width: 292px;

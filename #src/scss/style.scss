@@ -49,8 +49,16 @@
 	&__offer {
 		position: relative;
 		z-index: 3;
-		padding: 13.1% 0;
+		padding: 17.7vh 0 17.7vh;
 		max-width: 600px;
+
+		@media screen and (max-width: 991px) {
+			padding: 17.7vh 0 17.7vh 75px;
+		}
+
+		@media screen and (max-width: 575px) {
+			padding: 17.7vh 0 17.7vh 0;
+		}
 
 		@media screen and (max-width: 450px) {
 			padding: 25% 0;
@@ -75,7 +83,7 @@
 		}
 
 		&.active {
-			opacity: 1;
+			opacity: 0.8;
 			transform: translate(0, -50%);
 		}
 
@@ -96,7 +104,7 @@
 
 		&.active {
 			transform: translate(0, 0);
-			opacity: 1;
+			opacity: 0.8;
 		}
 
 		img {
@@ -151,15 +159,13 @@
 		}
 
 		@media screen and (max-width: 991px) {
-			margin-bottom: 22px;
+			margin-bottom: 30px;
 		}
 	}
 
 	&__wrapper {
-		padding: 0 85px 0 103px;
-
-		@media screen and (max-width: 991px) {
-			padding: 0;
+		@media screen and (min-width: 992px) {
+			padding: 0 85px 0 103px;
 		}
 	}
 
@@ -177,7 +183,7 @@
 		}
 
 		@media screen and (max-width: 991px) {
-			margin-bottom: 22px;
+			margin-bottom: 44px;
 		}
 	}
 
@@ -192,7 +198,7 @@
 		margin-right: 40px;
 
 		@media screen and (max-width: 575px) {
-			margin-right: 11px;
+			margin-right: 20px;
 		}
 
 		&:last-child {
@@ -488,8 +494,22 @@
 	@media screen and (max-width: 767px) {
 		padding-bottom: 35px;
 	}
+
 	&__container {
 		overflow: hidden;
+	}
+
+	&__container--top {
+		max-width: 1138px;
+		padding: 0;
+	}
+
+	&__top {
+		background: url(../img/rashguard/1.png) no-repeat center;
+
+		@media screen and (max-width: 767px) {
+			background: url(../img/rashguard/1.png) no-repeat center/cover;
+		}
 	}
 
 	&__wrapper {
@@ -497,7 +517,6 @@
 	}
 
 	&__photoes {
-		background: url(../img/rashguard/1.png) no-repeat center/cover;
 		min-height: 640px;
 		display: flex;
 		align-items: center;
@@ -621,6 +640,10 @@
 		z-index: 1;
 		transition: 0.3s ease all 0s;
 
+		@media screen and (max-width: 450px) {
+			transform: translate(-50%, -50%) scale(1.5);
+		}
+
 		img {
 			display: block;
 			width: 100%;
@@ -630,12 +653,29 @@
 
 	&__row {
 		display: flex;
-		margin: 0 -15px;
+		margin: 0 -28.5px;
+
+		@media screen and (max-width: 1200px) {
+			margin: 0 -20px;
+		}
+
+		@media screen and (max-width: 991px) {
+			margin: 0 -15px;
+		}
 	}
 
 	&__card {
-		padding: 0 15px;
+		padding: 0 28.5px;
 		flex: 0 0 25%;
+		max-width: 294px;
+
+		@media screen and (max-width: 1200px) {
+			padding: 0 20px;
+		}
+
+		@media screen and (max-width: 991px) {
+			padding: 0 15px;
+		}
 
 		@media screen and (max-width: 575px) {
 			max-width: 350px;
@@ -938,15 +978,15 @@
 	}
 
 	&__line-container {
-		opacity: 0;
-		transition: 0.3s ease all 1.5s;
-
 		&.active {
-			opacity: 1;
-
 			.line {
 				opacity: 1;
 			}
+		}
+
+		.line {
+			transition: 0.5s ease all 0s;
+			opacity: 0;
 		}
 	}
 
@@ -1301,7 +1341,7 @@
 			margin-bottom: 34px;
 		}
 
-		@media screen and (max-width: 366px) {
+		@media screen and (max-width: 336px) {
 			&::before {
 				height: 54px;
 				background: url(../img/icons/title-points-repeat.svg) no-repeat;
@@ -1388,7 +1428,6 @@
 		color: $accent-color;
 		font-size: 18px;
 		line-height: 22px;
-		letter-spacing: 1.2px;
 		width: 100%;
 		height: 30px;
 		display: flex;
@@ -1468,7 +1507,7 @@
 	}
 
 	&__title {
-		@media screen and (max-width: 383px) {
+		@media screen and (max-width: 352px) {
 			&::before {
 				height: 54px;
 				background: url(../img/icons/title-points-repeat.svg) no-repeat;
@@ -1694,7 +1733,7 @@
 			margin-bottom: 34px;
 		}
 
-		@media screen and (max-width: 431px) {
+		@media screen and (max-width: 397px) {
 			&::before {
 				height: 54px;
 				background: url(../img/icons/title-points-repeat.svg) no-repeat;
@@ -1711,6 +1750,10 @@
 .contacts {
 	padding: 69px 0 0;
 	margin-bottom: 100px;
+
+	@media screen and (max-width: 767px) {
+		margin-bottom: 64px;
+	}
 
 	@media screen and (max-width: 450px) {
 		padding-top: 0;
@@ -1840,6 +1883,10 @@
 	background: url(../img/footer/bg.png) no-repeat bottom/100%;
 	position: relative;
 	overflow: hidden;
+
+	@media screen and (max-width: 767px) {
+		margin-top: 64px;
+	}
 
 	// .instagram__title
 	&__title {

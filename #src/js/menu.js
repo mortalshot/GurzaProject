@@ -11,7 +11,7 @@ $(document).ready(function () {
             var id = $(this).attr('href');
             var top = $(id).offset().top;
             $('.header__burger').removeClass('active');
-            $('.menu__body').removeClass('active');
+            $('.header__menu').removeClass('active');
             $('body').removeClass('lock');
             $('body,html').animate({ scrollTop: top }, 1000);
         }

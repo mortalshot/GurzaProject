@@ -641,8 +641,8 @@ body.lock {
 .aim__first::before {
   width: 798px;
   height: 716px;
-  -webkit-animation: right-rotate 15s linear infinite;
-          animation: right-rotate 15s linear infinite;
+  -webkit-animation: right-rotate 30s ease-in-out infinite;
+          animation: right-rotate 30s ease-in-out infinite;
 }
 
 .no-webp .aim__first::after {
@@ -651,8 +651,8 @@ body.lock {
 .aim__first::after {
   width: 623px;
   height: 625px;
-  -webkit-animation: left-rotate 10s linear infinite;
-          animation: left-rotate 10s linear infinite;
+  -webkit-animation: left-rotate 20s ease-in-out infinite;
+          animation: left-rotate 20s ease-in-out infinite;
 }
 
 .aim__second {
@@ -687,8 +687,8 @@ body.lock {
 .aim__second::before {
   width: 485px;
   height: 483px;
-  -webkit-animation: right-rotate 8s linear infinite;
-          animation: right-rotate 8s linear infinite;
+  -webkit-animation: right-rotate 15s ease-in-out infinite;
+          animation: right-rotate 15s ease-in-out infinite;
 }
 
 .no-webp .aim__second::after {
@@ -697,8 +697,8 @@ body.lock {
 .aim__second::after {
   width: 366px;
   height: 366px;
-  -webkit-animation: left-rotate 6s linear infinite;
-          animation: left-rotate 6s linear infinite;
+  -webkit-animation: left-rotate 10s ease-in-out infinite;
+          animation: left-rotate 10s ease-in-out infinite;
 }
 
 .catalog {
@@ -707,6 +707,8 @@ body.lock {
 
 .catalog__cards {
   padding: 88px 0 82px;
+  max-width: 1125px;
+  margin: 0 auto;
 }
 
 .catalog__cards .slick-list {
@@ -720,7 +722,6 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 -15px;
 }
 
 .catalog__cards .slick-arrow {
@@ -1415,8 +1416,8 @@ body.lock {
   font-size: 14px;
   line-height: 21px;
   padding: 20px 4px;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid #313131;
+  border-bottom: 1px solid #313131;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1647,7 +1648,7 @@ body.lock {
 .first-screen__offer {
   position: relative;
   z-index: 3;
-  padding: 13.1% 0;
+  padding: 17.7vh 0 17.7vh;
   max-width: 600px;
 }
 
@@ -1670,7 +1671,7 @@ body.lock {
 }
 
 .first-screen__point-first.active {
-  opacity: 1;
+  opacity: 0.8;
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);
           transform: translate(0, -50%);
@@ -1699,7 +1700,7 @@ body.lock {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0);
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .first-screen__point-second img {
@@ -1725,10 +1726,6 @@ body.lock {
   -webkit-transition: 1s ease all 0s;
   -o-transition: 1s ease all 0s;
   transition: 1s ease all 0s;
-}
-
-.main-offer__wrapper {
-  padding: 0 85px 0 103px;
 }
 
 .main-offer__text {
@@ -1948,12 +1945,17 @@ body.lock {
   overflow: hidden;
 }
 
+.rashguard__container--top {
+  max-width: 1138px;
+  padding: 0;
+}
+
+.no-webp .rashguard__top {
+  background: url(../img/rashguard/1.png) no-repeat center; }
+
 .rashguard__wrapper {
   position: relative;
 }
-
-.no-webp .rashguard__photoes {
-  background: url(../img/rashguard/1.png) no-repeat center/cover; }
 
 .rashguard__photoes {
   min-height: 640px;
@@ -2084,14 +2086,15 @@ body.lock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 -15px;
+  margin: 0 -28.5px;
 }
 
 .rashguard__card {
-  padding: 0 15px;
+  padding: 0 28.5px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 25%;
           flex: 0 0 25%;
+  max-width: 294px;
 }
 
 .rashguard__icon {
@@ -2254,19 +2257,15 @@ body.lock {
   height: 214px;
 }
 
-.shop__line-container {
-  opacity: 0;
-  -webkit-transition: 0.3s ease all 1.5s;
-  -o-transition: 0.3s ease all 1.5s;
-  transition: 0.3s ease all 1.5s;
-}
-
-.shop__line-container.active {
-  opacity: 1;
-}
-
 .shop__line-container.active .line {
   opacity: 1;
+}
+
+.shop__line-container .line {
+  -webkit-transition: 0.5s ease all 0s;
+  -o-transition: 0.5s ease all 0s;
+  transition: 0.5s ease all 0s;
+  opacity: 0;
 }
 
 .shop .line {
@@ -2463,7 +2462,6 @@ body.lock {
   color: #9e9e51;
   font-size: 18px;
   line-height: 22px;
-  letter-spacing: 1.2px;
   width: 100%;
   height: 30px;
   display: -webkit-box;
@@ -2916,6 +2914,12 @@ body.lock {
   }
 }
 
+@media screen and (min-width: 992px) {
+  .main-offer__wrapper {
+    padding: 0 85px 0 103px;
+  }
+}
+
 @media screen and (min-width: 1441px) {
   .no-webp .shop {
     background: url(../img/shop/bg1.png) no-repeat right bottom/contain; }
@@ -2923,7 +2927,7 @@ body.lock {
 
 @media screen and (max-width: 1440px) {
   .title {
-    font-size: calc(24px + 14 * ((100vw - 320px) / (1440 - 320)));
+    font-size: calc(22px + 16 * ((100vw - 320px) / (1440 - 320)));
     line-height: calc(57 / 38);
   }
 
@@ -3142,6 +3146,14 @@ body.lock {
     padding-bottom: 0;
   }
 
+  .rashguard__row {
+    margin: 0 -20px;
+  }
+
+  .rashguard__card {
+    padding: 0 20px;
+  }
+
   .shop__aim .aim__first {
     width: 365px;
     height: 365px;
@@ -3178,6 +3190,10 @@ body.lock {
 }
 
 @media screen and (max-width: 991px) {
+  .header__item {
+    margin-right: 32px;
+  }
+
   .aim__first {
     width: 510px;
     height: 457px;
@@ -3220,20 +3236,20 @@ body.lock {
     right: -86px;
   }
 
+  .first-screen__offer {
+    padding: 17.7vh 0 17.7vh 75px;
+  }
+
   .first-screen__aim {
     top: -21.4%;
   }
 
   .main-offer__title {
-    margin-bottom: 22px;
-  }
-
-  .main-offer__wrapper {
-    padding: 0;
+    margin-bottom: 30px;
   }
 
   .main-offer__text {
-    margin-bottom: 22px;
+    margin-bottom: 44px;
   }
 
   .features-conditions {
@@ -3248,6 +3264,14 @@ body.lock {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
+  }
+
+  .rashguard__row {
+    margin: 0 -15px;
+  }
+
+  .rashguard__card {
+    padding: 0 15px;
   }
 
   .rashguard__icon {
@@ -3635,6 +3659,9 @@ body.lock {
     padding-bottom: 35px;
   }
 
+  .no-webp .rashguard__top {
+    background: url(../img/rashguard/1.png) no-repeat center/cover; }
+
   .rashguard__photoes {
     min-height: 600px;
   }
@@ -3841,6 +3868,10 @@ body.lock {
     margin: 0px 22px 0px 0px;
   }
 
+  .contacts {
+    margin-bottom: 64px;
+  }
+
   .contacts__row {
     display: block;
   }
@@ -3855,6 +3886,10 @@ body.lock {
 
   .contact__text {
     margin-bottom: 18px;
+  }
+
+  .instagram {
+    margin-top: 64px;
   }
 
   .instagram__text {
@@ -4079,12 +4114,16 @@ body.lock {
             transform: translate(0, 50%);
   }
 
+  .first-screen__offer {
+    padding: 17.7vh 0 17.7vh 0;
+  }
+
   .first-screen__aim {
     right: -20%;
   }
 
   .main-offer__button {
-    margin-right: 11px;
+    margin-right: 20px;
   }
 
   .conditions {
@@ -4403,6 +4442,12 @@ body.lock {
     max-width: 127px;
   }
 
+  .rashguard__aim {
+    -webkit-transform: translate(-50%, -50%) scale(1.5);
+        -ms-transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
+  }
+
   .rashguard__card {
     max-width: 237px;
   }
@@ -4649,21 +4694,21 @@ body.lock {
   }
 }
 
-@media screen and (max-width: 431px) {
+@media screen and (max-width: 397px) {
   .faq__title::before {
     height: 54px;
     background: url(../img/icons/title-points-repeat.svg) no-repeat;
   }
 }
 
-@media screen and (max-width: 383px) {
+@media screen and (max-width: 352px) {
   .review__title::before {
     height: 54px;
     background: url(../img/icons/title-points-repeat.svg) no-repeat;
   }
 }
 
-@media screen and (max-width: 366px) {
+@media screen and (max-width: 336px) {
   .mail__title::before {
     height: 54px;
     background: url(../img/icons/title-points-repeat.svg) no-repeat;
@@ -4705,7 +4750,7 @@ body.lock {
 
 .webp .first-screen { background: url(../img/main/bg.webp) no-repeat center/cover; }
 
-.webp .rashguard__photoes { background: url(../img/rashguard/1.webp) no-repeat center/cover; }
+.webp .rashguard__top { background: url(../img/rashguard/1.webp) no-repeat center; }
 
 .webp .shop { background: url(../img/shop/bg1.webp) no-repeat right bottom/cover; }
 
@@ -4727,4 +4772,9 @@ body.lock {
 @media screen and (max-width: 991px) {
 
   .webp .shop { background: url(../img/shop/bg1.webp) no-repeat right bottom/contain; }
+}
+
+@media screen and (max-width: 767px) {
+
+  .webp .rashguard__top { background: url(../img/rashguard/1.webp) no-repeat center/cover; }
 }

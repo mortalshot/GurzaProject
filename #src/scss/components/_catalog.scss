@@ -3,6 +3,8 @@
 
 	&__cards {
 		padding: 88px 0 82px;
+		max-width: 1125px;
+		margin: 0 auto;
 
 		@media screen and (max-width: 767px) {
 			padding: 36px 0;
@@ -22,7 +24,6 @@
 		.slick-track {
 			display: flex;
 			align-items: center;
-			margin: 0 -15px;
 
 			@media screen and (max-width: 767px) {
 				margin: 0 -10px;

@@ -131,24 +131,28 @@ $(document).ready(function () {
 	});
 
 	$('.rashguard__features').slick({
+		mobileFirst: true,
+		variableWidth: true,
 		autoplay: false,
 		infinite: false,
 		arrows: false,
 		dots: false,
-		variableWidth: true,
-		mobileFirst: true,
-		slidesToShow: 2,
+		adaptiveHeight: true,
 		responsive: [
 			{
-				breakpoint: 576,
+				breakpoint: 320,
 				settings: {
-					slidesToShow: 2,
-					centerMode: false,
-					variableWidth: false,
+					slidesToShow: 1,
 				}
 			},
 			{
-				breakpoint: 992,
+				breakpoint: 451,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+			{
+				breakpoint: 768,
 				settings: "unslick"
 			},
 		]
@@ -159,7 +163,12 @@ $(document).ready(function () {
 		$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(0.7)" });
 	});
 	$('.rashguard__photoes').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-		$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(1)" });
+		console.log($(window).width());
+		if ($(window).width() > 451) {
+			$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(1)" });
+		} else {
+			$('.rashguard__aim').css({ transform: "translate(-50%, -50%) scale(1.5)" });
+		}
 	});
 
 	// Ширина точек rashguard слайдера
@@ -284,4 +293,10 @@ $(document).ready(function () {
 	setTimeout(() => {
 		$('a[href$="=free-widget"]').css("display", "none");
 	}, 1000);
+
+	if ($('.shop__line-container').hasClass('active')) {
+		setTimeout(() => {
+			$('.shop__line-container.active .line').css({ opacity: 1 });
+		}, 3000);
+	}
 });
