@@ -9,8 +9,8 @@
   "author": "mortal",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
     "del": "^5.1.0",
@@ -31,7 +31,7 @@
     "gulp-webp": "^4.0.1",
     "gulp-webp-html": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
-    "npm-check-updates": "^7.1.0",
+    "npm-check-updates": "^8.0.2",
     "webp-converter": "^2.2.3"
   }
 }

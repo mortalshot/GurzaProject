@@ -2,7 +2,7 @@
     // .accordion__title
     &__title {
         padding: 20px;
-        border-top: 1px solid #615d5d;
+        border-top: 1px solid #313131;
         font-weight: 400;
         font-size: 20px;
         line-height: 32px;
@@ -10,7 +10,7 @@
         cursor: pointer;
 
         @media screen and (max-width: 1440px) {
-            font-size: calc(16px + 4 * ((100vw - 320px) / (1440 - 320)));
+            font-size: calc(14px + 6 * ((100vw - 320px) / (1440 - 320)));
             line-height: calc(32 / 20);
         }
 

@@ -2097,8 +2097,6 @@ $(document).ready(function () {
     });
   });
   $('.rashguard__photoes').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-    console.log($(window).width());
-
     if ($(window).width() > 451) {
       $('.rashguard__aim').css({
         transform: "translate(-50%, -50%) scale(1)"
@@ -2163,7 +2161,7 @@ $(document).ready(function () {
       setTimeout(function () {
         th.trigger("reset");
       }, 800);
-      $('a[href="#thanks"]')[0].click();
+      window.location = "/thanks.html";
     });
     return false;
   }); // Ограничение формата отправляемых файлов
@@ -2215,7 +2213,7 @@ $(document).ready(function () {
           console.log(msg);
 
           if (msg == 'ok') {
-            $('a[href="#thanks"]')[0].click();
+            window.location = "/thanks.html";
             $('#form').trigger('reset'); // очистка формы
           } else {
             alert('Что-то пошло не так');
