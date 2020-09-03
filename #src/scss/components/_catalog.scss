@@ -580,10 +580,10 @@
 	}
 
 	.slick-list {
-		padding-bottom: 70px;
+		margin-bottom: 70px;
 
 		@media screen and (max-width: 767px) {
-			padding-bottom: 20px;
+			margin-bottom: 20px;
 		}
 	}
 
@@ -679,12 +679,13 @@
 
 .item-photoes {
 	&__item {
+		&:focus {
+			outline: none;
+		}
+
 		&.slick-slide {
 			display: flex;
 			justify-content: center;
-		}
-		&:focus {
-			outline: none;
 		}
 	}
 }

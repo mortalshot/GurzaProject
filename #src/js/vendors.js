@@ -3,6 +3,8 @@
 @@include('libs/jcf.js')
 @@include('libs/jcf.file.js')
 @@include('libs/maskedinput.js')
+@@include('libs/ez-plus.js')
+@@include('libs/mousewheel.js')
 
 // custom scripts
 @@include('webp.js')

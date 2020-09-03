@@ -34,6 +34,7 @@ $(document).ready(function () {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		variableWidth: false,
+		adaptiveHeight: true,
 	});
 	// Ширина точек слайдера в модальном окне
 	$(function () {
@@ -297,5 +298,28 @@ $(document).ready(function () {
 		setTimeout(() => {
 			$('.shop__line-container.active .line').css({ opacity: 1 });
 		}, 3000);
-	}
+	};
+
+	// Инициализация плагина увеличения картинок
+	if ($(window).width() > 992) {
+		$('.drift-demo-trigger').ezPlus({
+			lensSize: 100,
+			lenszoom: false,
+		});
+	};
+
+	// Кнопка вверх
+	const btnUp = $('.up-btn');
+	$(window).scroll(function () {
+		var winScrollTop = $(this).scrollTop();
+		if (winScrollTop > 600) {
+			btnUp.addClass('show');
+		} else {
+			btnUp.removeClass('show');
+		}
+	});
+	btnUp.on('click', function (e) {
+		e.preventDefault();
+		$('html, body').animate({ scrollTop: 0 }, '1000');
+	});
 });

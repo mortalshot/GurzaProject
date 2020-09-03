@@ -73,6 +73,11 @@
 	&__menu {
 		z-index: 4;
 
+		@media screen and (min-width: 768px) {
+			display: flex;
+			align-items: center;
+		}
+
 		@media screen and (max-width: 767px) {
 			position: fixed;
 			top: -100%;
@@ -131,6 +136,20 @@
 
 		@media screen and (max-width: 767px) {
 			font-size: 20px;
+		}
+	}
+
+	&__phone {
+		display: none;
+
+		@media screen and (min-width: 767px) {
+			margin-left: 40px;
+			height: 20px;
+			display: block;
+		}
+
+		@media screen and (max-width: 991px) {
+			margin-left: 20px;
 		}
 	}
 }

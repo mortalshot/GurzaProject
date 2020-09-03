@@ -19,6 +19,7 @@ body {
     font-size: 14px;
     line-height: 22px;
     color: $text-color;
+    overflow-x: hidden;
 
     &.lock {
         overflow: hidden;
@@ -29,6 +30,10 @@ body {
     max-width: $container;
     margin: 0 auto;
     padding: 0 10px;
+}
+
+.ZoomContainer {
+    display: none;
 }
 
 .button {
@@ -84,7 +89,7 @@ body {
     font-weight: 600;
     font-size: 38px;
     line-height: 57px;
-    
+
     @media screen and (max-width: 1440px) {
         font-size: calc(22px + 16 * ((100vw - 320px) / (1440 - 320)));
         line-height: calc(57 / 38);
@@ -175,4 +180,65 @@ body {
 
 .accent {
     color: $accent-color;
+}
+
+.up-btn {
+    position: fixed;
+    bottom: 32px;
+    left: -100px;
+    transition: 0.3s ease all 0s;
+    opacity: 0;
+    visibility: hidden;
+
+    span {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #c4c4c4;
+        @media screen and (max-width: 575px) {
+            width: 51px;
+            height: 51px;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            width: 25px;
+            height: 4.5px;
+            background: #000;
+            position: absolute;
+            top: 50%;
+            @media screen and (max-width: 575px) {
+                width: 21.25px;
+                height: 3.8px;
+            }
+        }
+        &::before {
+            right: 10px;
+            transform: translate(0, -50%) rotate(45deg);
+            @media screen and (max-width: 575px) {
+                right: 8.5px;
+            }
+        }
+        &::after {
+            transform: translate(0, -50%) rotate(-45deg);
+            right: 25px;
+            @media screen and (max-width: 575px) {
+                right: 21px;
+            }
+        }
+    }
+
+    &.show {
+        opacity: 0.3;
+        visibility: visible;
+        left: 30px;
+        @media screen and (max-width: 575px) {
+            left: 20px;
+        }
+    }
 }

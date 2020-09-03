@@ -16,11 +16,11 @@ try {
     $mail->SMTPAuth   = true;
     // Настройки вашей почты
     $mail->Host       = 'smtp.gmail.com'; // SMTP сервера GMAIL
-    $mail->Username   = 'seregagl1998@gmail.com'; // Логин на почте
-    $mail->Password   = 'otog5aoz'; // Пароль на почте
+    $mail->Username   = 'banabey704@gmail.com'; // Логин на почте
+    $mail->Password   = 'bjmNrmFk'; // Пароль на почте
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom('seregagl1998@gmail.com', 'Gurza'); // Адрес самой почты и имя отправителя
+    $mail->setFrom('banabey704@gmail.com', 'Gurza'); // Адрес самой почты и имя отправителя
     // Получатель письма
     $mail->addAddress('seregagl1996@gmail.com');
     // Прикрипление файлов к письму

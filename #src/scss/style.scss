@@ -22,7 +22,7 @@
 @import "components/_modals";
 @import "components/_accordion";
 
-.first-screen {
+.first-screen {	
 	background: url(../img/main/bg.png) no-repeat center/cover;
 	position: relative;
 	overflow: hidden;
@@ -52,8 +52,18 @@
 		padding: 17.7vh 0 17.7vh;
 		max-width: 600px;
 
+		@media screen and (max-width: 1024px) {
+			margin: 0 auto;
+			max-width: 470px;
+		}
+
+		@media screen and (max-width: 767px) {
+			max-width: 400px;
+		}
+
 		@media screen and (max-width: 575px) {
 			padding: 17.7vh 0 17.7vh 0;
+			max-width: 349px;
 		}
 
 		@media screen and (max-width: 450px) {
@@ -73,6 +83,7 @@
 		transform: translate(300%, -50%);
 		width: 26.5%;
 		transition: 0.8s ease all 0s;
+		pointer-events: none;
 
 		@media screen and (max-width: 767px) {
 			width: 35%;
@@ -97,6 +108,7 @@
 		opacity: 0;
 		transform: translate(-300%, 0);
 		transition: 0.8s ease all 0.3s;
+		pointer-events: none;
 
 		&.active {
 			transform: translate(0, 0);
@@ -842,6 +854,7 @@
 		max-width: 300px;
 		@media screen and (max-width: 450px) {
 			margin-bottom: 40px;
+			max-width: inherit;
 		}
 	}
 
@@ -1066,6 +1079,11 @@
 			right: 40.4%;
 			transition: 0.3s ease all 0s;
 
+			@media screen and (min-width: 1441px) {
+				top: 68%;
+				right: 32.4%;
+			}
+
 			@media screen and (max-width: 767px) {
 				top: 67%;
 			}
@@ -1086,6 +1104,11 @@
 			top: 34.1%;
 			right: 33.6%;
 			transition: 0.3s ease all 0.1s;
+
+			@media screen and (min-width: 1441px) {
+				top: 54.1%;
+				right: 28.6%;
+			}
 
 			@media screen and (max-width: 767px) {
 				top: 63.3%;
@@ -1108,6 +1131,11 @@
 			top: 44.3%;
 			right: 31.4%;
 			transition: 0.3s ease all 0.2s;
+
+			@media screen and (min-width: 1441px) {
+				top: 64.3%;
+				right: 26.4%;
+			}
 
 			@media screen and (max-width: 767px) {
 				top: 59.1%;
@@ -1425,7 +1453,7 @@
 	.jcf-file {
 		position: relative;
 		color: $accent-color;
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 22px;
 		width: 100%;
 		height: 30px;
@@ -1433,8 +1461,8 @@
 		overflow: hidden;
 
 		@media screen and (max-width: 1440px) {
-			font-size: calc(12px + 6 * ((100vw - 320px) / (1440 - 320)));
-			line-height: calc(22 / 18);
+			font-size: calc(12px + 4 * ((100vw - 320px) / (1440 - 320)));
+			line-height: calc(22 / 16);
 		}
 
 		.jcf-fake-input {
@@ -2007,7 +2035,7 @@
 		line-height: 24px;
 		margin-bottom: 50px;
 
-		@media screen and (max-width: 991px) {
+		@media screen and (max-width: 1024px) {
 			margin: 0 auto 45px;
 		}
 	}
@@ -2017,7 +2045,7 @@
 		width: 269px;
 		height: 61px;
 
-		@media screen and (max-width: 991px) {
+		@media screen and (max-width: 1024px) {
 			margin: 0 auto 100px;
 		}
 
@@ -2209,7 +2237,7 @@
 			}
 		}
 
-		.logo__text-wrapper{
+		.logo__text-wrapper {
 			@media screen and (max-width: 575px) {
 				max-width: inherit;
 			}
